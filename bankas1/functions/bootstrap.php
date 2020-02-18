@@ -2,7 +2,7 @@
 session_start();
 define('DB', DIR.'db/db.json');
 
-define('URL', 'http://localhost/11/bankas1/');
+define('URL', 'http://miskobankas.pz/');
 
 require DIR.'functions/common.php';
 require DIR.'functions/msg.php';
