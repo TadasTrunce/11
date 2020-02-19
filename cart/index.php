@@ -4,6 +4,7 @@ require __DIR__.'/class/Cart.php';
 require __DIR__.'/class/Products.php';
 $products = new Products;
 $cart = new Cart($products);
+
 if (!empty($_POST)) {
     if ($_POST['action'] == 'add') {
         $cart->add($_POST['product_id'], $_POST['product_count']);
@@ -28,7 +29,7 @@ if (!empty($_POST)) {
 <?php } ?>
 </div>
 <div style="display: flex;">
-    <?php foreach (require __DIR__.'/db.php' as $id => $product) { ?>
+    <?php foreach ($products->products as $id => $product) { ?>
     <section style="width:25%;">
         <h1><?= $product['title'] ?></h1>
         <img src="<?= $product['img'] ?>">
