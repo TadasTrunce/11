@@ -25,6 +25,7 @@ if (!empty($_POST)) {
     <title>Shop</title>
 </head>
 <body>
+<div id="cart">
 <div class="cart" style="background: gray; padding: 5px; margin: 7px;">
 <?php foreach ($cart->getCart() as $id => $count) { ?>
     <h3><span><?= $cart->getProduct($id)['title'].' X '.$count .' '. ($cart->getProduct($id)['price'] * $count) .' EUR'?><span>
@@ -37,6 +38,7 @@ if (!empty($_POST)) {
 <?php } ?>
 <h3>TOTAL: <?= $cart->cartTotal() ?> EUR</h3>
 </div>
+
 <div style="display: flex;">
     <?php foreach ($products->products as $id => $product) { ?>
     <section style="width:25%;">
@@ -46,11 +48,11 @@ if (!empty($_POST)) {
         <p>
         <?= $product['desc'] ?>
         </p>
-        <form action="" method="post">
-        <input type="text" name="product_count" value="1">
-        <input type="hidden" name="action" value="add">
-        <button type="submit" name="product_id" value="<?= $id ?>">ADD</button>
-        </form>
+        <div class="add-button">
+        <input type="text" class="count" name="product_count" value="1">
+        <input type="hidden"class="action" name="action" value="add">
+        <button type="button"class="id" name="product_id" value="<?= $id ?>">ADD</button>
+        </div>
     </section>
     <?php } ?>
  </div>
