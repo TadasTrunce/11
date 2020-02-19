@@ -5,17 +5,6 @@ require __DIR__.'/class/Products.php';
 $products = new Products;
 $cart = new Cart($products);
 
-if (!empty($_POST)) {
-    if ($_POST['action'] == 'add') {
-        $cart->add($_POST['product_id'], $_POST['product_count']);
-    }
-    if ($_POST['action'] == 'remove') {
-        $cart->remove($_POST['product_id']);
-    }
-
-    header('Location: http://localhost/11/cart/');
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +15,7 @@ if (!empty($_POST)) {
 </head>
 <body>
 <div id="cart">
+
 <div class="cart" style="background: gray; padding: 5px; margin: 7px;">
 <?php foreach ($cart->getCart() as $id => $count) { ?>
     <h3><span><?= $cart->getProduct($id)['title'].' X '.$count .' '. ($cart->getProduct($id)['price'] * $count) .' EUR'?><span>
@@ -37,6 +27,7 @@ if (!empty($_POST)) {
     </h3>
 <?php } ?>
 <h3>TOTAL: <?= $cart->cartTotal() ?> EUR</h3>
+</div>
 </div>
 
 <div style="display: flex;">

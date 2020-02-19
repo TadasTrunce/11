@@ -1,6 +1,6 @@
 
 $(document).on('click', '.add-button button', function(){
-    
+
     let count = $(this).closest('.add-button').find('.count').val();
     let action = $(this).closest('.add-button').find('.action').val();
     let id = $(this).closest('.add-button').find('.id').val();
@@ -11,7 +11,8 @@ $(document).on('click', '.add-button button', function(){
         id: id,
       })
       .then(function (response) {
-        // console.log(response);
+          $('#cart').empty().html(response.data.html);
+        // console.log(response.data.html);
       })
       .catch(function (error) {
         console.log(error);

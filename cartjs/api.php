@@ -17,6 +17,6 @@ $html = ob_get_clean();
 
 header('Content-Type: application/json');
 
-$response = ['data' => ['html' => $html]];
+$response = ['html' => $html];
 
 echo json_encode($response);
