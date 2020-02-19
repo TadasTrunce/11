@@ -22,6 +22,14 @@ class Cart
         $this->update();
     }
 
+    public function remove($id)
+    {
+        if (isset($this->cart[$id])) {
+            unset($this->cart[$id]);
+        }
+        $this->update();
+    }
+
     public function update()
     {
         $_SESSION['cart'] = $this->cart;
@@ -46,6 +54,15 @@ class Cart
 
         return null;
         
+    }
+
+    public function cartTotal()
+    {
+        $total = 0;
+        foreach ($this->cart as $id => $count) {
+            $total += $this->getProduct($id)['price']*$count;
+        }
+        return $total;
     }
 
 }

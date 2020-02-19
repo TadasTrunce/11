@@ -9,6 +9,9 @@ if (!empty($_POST)) {
     if ($_POST['action'] == 'add') {
         $cart->add($_POST['product_id'], $_POST['product_count']);
     }
+    if ($_POST['action'] == 'remove') {
+        $cart->remove($_POST['product_id']);
+    }
 
     header('Location: http://localhost/11/cart/');
 }
@@ -24,9 +27,15 @@ if (!empty($_POST)) {
 <body>
 <div class="cart" style="background: gray; padding: 5px; margin: 7px;">
 <?php foreach ($cart->getCart() as $id => $count) { ?>
-    <h3><?= $cart->getProduct($id)['title'].' X '.$count ?></h3>
-
+    <h3><span><?= $cart->getProduct($id)['title'].' X '.$count .' '. ($cart->getProduct($id)['price'] * $count) .' EUR'?><span>
+    <form action="" method="post" style="display:inline-block;">
+        <input type="hidden" name="action" value="remove">
+        <button type="submit" name="product_id" value="<?= $id ?>" 
+        style="font-size:30px;font-weight:bold;background:transparent;border:none;color:brown;">-</button>
+    </form>
+    </h3>
 <?php } ?>
+<h3>TOTAL: <?= $cart->cartTotal() ?> EUR</h3>
 </div>
 <div style="display: flex;">
     <?php foreach ($products->products as $id => $product) { ?>
