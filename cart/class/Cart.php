@@ -2,12 +2,13 @@
 
 class Cart
 {
-
     private $cart;
+    private $products;
 
-    public function __construct()
+    public function __construct(Products $products)
     {
         $this->cart = $_SESSION['cart'] ?? [];
+        $this->products = $products;
     }
     
     public function add($id, $count)
@@ -19,7 +20,6 @@ class Cart
             $this->cart[$id] = $count;
         }
         $this->update();
-        
     }
 
     public function update()
@@ -35,6 +35,17 @@ class Cart
     public function setCart($cart)
     {
         $_SESSION['cart'] = $cart;
+    }
+
+    public function getProduct($id)
+    {
+
+        if (isset($this->products->products[$id])) {
+            return $this->products->products[$id];
+        }
+
+        return null;
+        
     }
 
 }

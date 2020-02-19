@@ -1,7 +1,9 @@
 <?php
 session_start();
 require __DIR__.'/class/Cart.php';
-$cart = new Cart;
+require __DIR__.'/class/Products.php';
+$products = new Products;
+$cart = new Cart($products);
 if (!empty($_POST)) {
     if ($_POST['action'] == 'add') {
         $cart->add($_POST['product_id'], $_POST['product_count']);
@@ -9,8 +11,6 @@ if (!empty($_POST)) {
 
     header('Location: http://localhost/11/cart/');
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -21,6 +21,12 @@ if (!empty($_POST)) {
     <title>Shop</title>
 </head>
 <body>
+<div class="cart" style="background: gray; padding: 5px; margin: 7px;">
+<?php foreach ($cart->getCart() as $id => $count) { ?>
+    <h3><?= $cart->getProduct($id)['title'].' X '.$count ?></h3>
+
+<?php } ?>
+</div>
 <div style="display: flex;">
     <?php foreach (require __DIR__.'/db.php' as $id => $product) { ?>
     <section style="width:25%;">
