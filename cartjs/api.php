@@ -40,6 +40,7 @@ if ($data['action'] == 'remove') {
 
 
 header('Content-Type: application/json');
+// header('HTTP/1.1 500 Internal Server Error');
 
 $response = ['html' => $html];
 

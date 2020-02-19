@@ -9,7 +9,7 @@ $(document).on('click', '.add-button button', function(){
         count: count,
         action: action,
         id: id,
-      })
+      })// iseinam i php
       .then(function (response) {
           $('#cart').empty().html(response.data.html);
           A();
@@ -51,6 +51,7 @@ $(document).ready(function(){
         // console.log(response.data.html);
       })
       .catch(function (error) {
+        console.log('E RR O R');
         console.log(error);
       });
 
