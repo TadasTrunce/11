@@ -13,5 +13,7 @@
             "email": "42836152+A-Kija@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "intervention/image": "^2.5"
+    }
 }
