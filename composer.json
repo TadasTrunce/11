@@ -1,0 +1,17 @@
+{
+    "name": "puole/11",
+    "description": "labas",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Miskai\\": "int/"
+        }
+    },
+    "authors": [
+        {
+            "name": "A-Kija",
+            "email": "42836152+A-Kija@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

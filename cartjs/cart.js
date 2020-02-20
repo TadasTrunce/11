@@ -40,11 +40,11 @@ $(document).on('click', '.cart-remove button', function(){
 }
 
 
-$(document).ready(function(){
+$(document).ready(function(){// stebi puslapio uzsikrovima
 
     axios.post('http://localhost/11/cartjs/api.php', {
         action: 'refresh',
-      })
+      })// einam i php
       .then(function (response) {
           $('#cart').empty().html(response.data.html);
           A();

@@ -15,8 +15,7 @@ $cart = new Cart($products);
 </head>
 <body>
 <div id="cart">
-
-
+<!-- dedame krepseli -->
 </div>
 
 <div style="display: flex;">

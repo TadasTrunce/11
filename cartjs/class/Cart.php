@@ -37,7 +37,7 @@ class Cart
 
     public function getCart()
     {
-        return $_SESSION['cart'] ?? [];
+        return $this->cart;
     }
 
     public function setCart($cart)
@@ -49,7 +49,7 @@ class Cart
     {
 
         if (isset($this->products->products[$id])) {
-            return $this->products->products[$id];
+            return $this->products->products[$id]; // masyvas produkto kurio id == $id
         }
 
         return null;
