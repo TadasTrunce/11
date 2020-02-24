@@ -2,7 +2,7 @@
 
 $stops = [];
 $buses = [];
-$busA_capacity = 45;
+$busA_capacity = 10;
 $busB_capacity = 10;
 
 foreach(range('A','J') as $stop) {
@@ -22,8 +22,12 @@ do {
     $busNow++;
     $buses[$busNow] = (rand(0,1)) ? $busA_capacity : $busB_capacity;
     foreach ($stops as &$stop) {
-        _dc($stops);
+        if($buses[$busNow]) {
         _dc($buses);
+        _dc($stops);
+        
+        }
+
         if ($stop['gnoms'] <= $buses[$busNow]) {// telpa visi gnomai
             $buses[$busNow] = $buses[$busNow] - $stop['gnoms'];
             $stop['gnoms'] = 0;
