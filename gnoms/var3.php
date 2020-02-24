@@ -6,6 +6,8 @@ $busA_capacity = 45;
 $busB_capacity = 10;
 
 foreach(range('A','J') as $stop) {
+
+    
     $stops[$stop] = rand(0, 10);
 }
 
